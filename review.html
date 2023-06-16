@@ -172,19 +172,25 @@
                                     <div class="col-lg-9 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
 
                                         <div class="text-start ps-4">
-                                            <h5 class="mb-3">請問1+1等於多少</h5>
+                                            <h5 class="mb-3">1.請問1+1等於多少</h5>
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
                                         <div class="d-flex mb-3">
                                             <a class="btn btn-light btn-square me-3" href=""><i
                                                     class="far fa-heart text-primary"></i></a>
-                                            <a class="btn btn-primary" href="">討論區</a>
+                                            <!-- <a class="btn btn-primary" href="">討論區</a> -->
+                                            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                                                data-bs-target="#offcanvasRight"
+                                                aria-controls="offcanvasRight">討論區</button>
+
+
                                         </div>
                                         <small class="text-truncate"><i
                                                 class="far fa-calendar-alt text-primary me-2"></i>錯誤率:30%</small>
                                     </div>
                                 </div>
+
                                 <div class="container">
                                     <div class="row row-cols-2">
                                         <button type="button" class="btn btn-success">A.11</button>
@@ -634,6 +640,44 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <!-- Jobs End -->
