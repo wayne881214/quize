@@ -172,7 +172,6 @@
                             <div class="job-item p-4 mb-4">
                                 <div class="row g-4">
                                     <div class="col-lg-9 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-
                                         <div class="text-start ps-4">
                                             <h5 class="mb-3">1.請問1+1等於多少</h5>
                                         </div>
@@ -185,14 +184,10 @@
                                             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
                                                 data-bs-target="#offcanvasRight"
                                                 aria-controls="offcanvasRight">討論區</button>
-
-
                                         </div>
-                                        <small class="text-truncate"><i
-                                                class="far fa-calendar-alt text-primary me-2"></i>錯誤率:30%</small>
+
                                     </div>
                                 </div>
-
                                 <div class="container">
                                     <div class="row row-cols-2">
                                         <button type="button" class="btn btn-success">A.11</button>
@@ -202,12 +197,45 @@
                                     </div>
 
                                 </div>
-                                <div class="alert alert-danger d-flex align-items-center" role="alert">
-                                    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
-                                        aria-label="Danger:">
-                                        <use xlink:href="#exclamation-triangle-fill" /></svg>
-                                    <div>
-                                        解析解析解析
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <h2 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">作答情況</h2>
+                                            <div>
+                                                <canvas id="myChart2"></canvas>
+                                            </div>
+                                            <h5 class="text-truncate">正確率:10%</h5>
+                                            <h5 class="text-truncate">有20%的人寫了跟妳一樣的答案</h5>
+                                        </div>
+                                        <div class="col-8">
+                                            <h2 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">解析</h2>
+                                            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                                    aria-label="Danger:">
+                                                    <use xlink:href="#exclamation-triangle-fill" /></svg>
+                                                <div>
+                                                    解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析解析
+                                                </div>
+                                            </div>
+                                            <div class="tags-block">
+                                                <h5 class="mb-3">Tags</h5>
+                                                <a href="#" class="tags-block-link">
+                                                    數學
+                                                </a>
+                                                <a href="#" class="tags-block-link">
+                                                    基本題
+                                                </a>
+                                                <a href="#" class="tags-block-link">
+                                                    數論
+                                                </a>
+                                                <a href="#" class="tags-block-link">
+                                                    加法
+                                                </a>
+                                                <a href="#" class="tags-block-link">
+                                                    資料結構
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -647,6 +675,89 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                datasets: [{
+                    label: '積分',
+                    data: [200, 400, 200, 300, 200, 100, 0, 0, 0, 0, 0, 0],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+        const ctx2 = document.getElementById('myChart2');
+        new Chart(ctx2, {
+            type: 'pie',
+            data: {
+                datasets: [{
+                    data: [10, 20, 60, 10]
+                }],
+
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                labels: [
+                    'A',
+                    'B',
+                    'C',
+                    'D',
+                ]
+            }
+        });
+
+        // const labels2 = Utils.months({
+        //     count: 7
+        // });
+        const data3 = {
+            // labels: labels2,
+            labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
+            datasets: [{
+                label: '積分紀錄(月)',
+                data: [100, 300, 200, 100, 0, 200, 0],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 205, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(201, 203, 207, 0.2)'
+                ],
+                borderColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)'
+                ],
+                borderWidth: 1
+            }]
+        };
+        const ctx3 = document.getElementById('myChart3');
+        new Chart(ctx3, {
+            type: 'bar',
+            data: data3,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
