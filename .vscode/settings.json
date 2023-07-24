@@ -1,4 +1,9 @@
 {
   "java.debug.settings.onBuildFailureProceed": true,
+<<<<<<< HEAD
+=======
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "maven.view": "hierarchical",
+>>>>>>> account
   "java.compile.nullAnalysis.mode": "automatic"
 }

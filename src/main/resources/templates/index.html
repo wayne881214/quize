@@ -86,8 +86,8 @@
                         </div>
                     </div>
                 </div>
-                <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">登出<i
-                        class="fa fa-arrow-right ms-3"></i></a>
+                <button type="button" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block"
+                    onclick="deleteAllCookies()">登出</button>
             </div>
         </nav>
         <!-- Navbar End -->
@@ -105,7 +105,8 @@
                                 <div class="col-10 col-lg-8">
                                     <h1 class="display-3 text-white animated slideInDown mb-4">最優質的課後答題系統</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">多元學習. 問題討論. 數據分析. 多種好康</p>
-                                    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">尋找課程</a>
+                                    <a href=""
+                                        class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">尋找課程</a>
                                     <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">尋找教師</a>
                                 </div>
                             </div>
@@ -121,7 +122,8 @@
                                 <div class="col-10 col-lg-8">
                                     <h1 class="display-3 text-white animated slideInDown mb-4">最優質的課後答題系統</h1>
                                     <p class="fs-5 fw-medium text-white mb-4 pb-2">多元學習. 問題討論. 數據分析. 多種好康</p>
-                                    <a href="" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">尋找課程</a>
+                                    <a href=""
+                                        class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">尋找課程</a>
                                     <a href="" class="btn btn-secondary py-md-3 px-md-5 animated slideInRight">尋找教師</a>
                                 </div>
                             </div>
@@ -910,7 +912,23 @@
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js">
+
+    </script>
+    <script type="text/javascript">
+        function deleteAllCookies() {
+            var cookies = document.cookie.split(";");
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i];
+                var eqPos = cookie.indexOf("=");
+                var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+                document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+            }
+            console.log("cookies 清除完成");
+            alert("登出完成")
+        }
+    </script>
+
 </body>
 
 </html>
