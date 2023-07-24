@@ -1,4 +1,4 @@
-package cloudcode.helloworld.web;
+package cloudcode.client.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /** Defines a controller to handle HTTP requests */
 @Controller
-public final class HelloWorldController {
+public final class ClientController {
 
   private static String project;
-  private static final Logger logger = LoggerFactory.getLogger(HelloWorldController.class);
+  private static final Logger logger = LoggerFactory.getLogger(ClientController.class);
 
   /**
    * Create an endpoint for the landing page

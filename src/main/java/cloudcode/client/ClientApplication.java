@@ -1,4 +1,4 @@
-package cloudcode.helloworld;
+package cloudcode.client;
 
 import java.util.Collections;
 import org.slf4j.Logger;
@@ -8,17 +8,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /** This class serves as an entry point for the Spring Boot app. */
 @SpringBootApplication
-public class HelloWorldApplication {
+public class ClientApplication {
 
-  private static final Logger logger = LoggerFactory.getLogger(HelloWorldApplication.class);
+  private static final Logger logger = LoggerFactory.getLogger(ClientApplication.class);
 
   public static void main(final String[] args) throws Exception {
     String port = System.getenv("PORT");
     if (port == null) {
-      port = "8080";
+      port = "8081";
       logger.warn("$PORT environment variable not set, defaulting to 8080");
     }
-    SpringApplication app = new SpringApplication(HelloWorldApplication.class);
+    SpringApplication app = new SpringApplication(ClientApplication.class);
     app.setDefaultProperties(Collections.singletonMap("server.port", port));
 
     // Start the Spring Boot application.
