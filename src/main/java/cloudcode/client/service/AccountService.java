@@ -56,9 +56,9 @@ public class AccountService {
   public String addAccount(final Account account) {
     String returnMessage;
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
-      String query = String.format("INSERT INTO `fcu_shop`.`帳密資料` "
-          + "(`電子郵件`, `密碼`) "
-          + "VALUES ('%s','%s');", account.getEmail(), account.getPassword());
+      String query = String.format("INSERT INTO `quize`.`account` "
+          + "(`account`, `password`, `name`) "
+          + "VALUES ('%s','%s','%s');", account.getAccount(), account.getPassword(),account.getName());
       System.out.println(query);
       connection.createQuery(query, true).executeUpdate().getKey();
 
@@ -86,7 +86,7 @@ public class AccountService {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
       String query =  String.format("SELECT * FROM fcu_shop.帳密資料 "
           + "WHERE 電子郵件='%s' "
-          + "and 密碼='%s';", account.getEmail(), account.getPassword());
+          + "and 密碼='%s';", account.getAccount(), account.getPassword());
       System.out.println(query);
       return connection.createQuery(query).executeScalar();
     }

@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-
-
+// import org.slf4j.Logger;
+// import org.slf4j.LoggerFactory;
+// import org.springframework.stereotype.Controller;
+// import org.springframework.ui.Model;
+// import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * 註解起來就好了啦.
@@ -24,12 +27,12 @@ import org.springframework.web.bind.annotation.*;
  */
 @SuppressWarnings("CheckStyle")
 @RestController
-public class AccountController { @Autowired
-AccountService accountManager;
+public class AccountController {
+  @Autowired AccountService accountManager;
 
   @SuppressWarnings("checkstyle:RegexpSingleline")
   @GetMapping("/api/getAllAccounts")
-public List<Account> getAccounts() {
+  public List<Account> getAccounts() {
     System.out.println("取得所有帳密");
     return accountManager.getAccounts();
   }
@@ -52,7 +55,6 @@ public List<Account> getAccounts() {
     }
     System.out.println("sucess");
     return true;
-
   }
 
   /**
@@ -67,15 +69,15 @@ public List<Account> getAccounts() {
   @ResponseBody
   public boolean getLoginData(@RequestParam String email,
                               @RequestParam String password,
-                              HttpServletRequest req,
-                              HttpServletResponse resp) throws IOException {
+                              HttpServletRequest req, HttpServletResponse resp)
+      throws IOException {
     //接收前端帳密資料
     System.out.println("email is " + email);
     System.out.println("password is " + password);
     Account account = new Account(email, password);
 
     //檢查帳密正確
-    //checkAccount(account);
+    // checkAccount(account);
     if (accountManager.checkLogin(account) == null) {
       System.out.println("null");
       resp.sendRedirect("/login.html");
@@ -93,7 +95,6 @@ public List<Account> getAccounts() {
     }
   }
 
-
   //註冊帳密
 
   //後端檢查註冊_function(){
@@ -102,7 +103,7 @@ public List<Account> getAccounts() {
   // }
 
   //檢查重複_function(){
-  //return ture
+  // return ture
   // }
   /**
    * 註解起來就好了啦.
@@ -115,23 +116,22 @@ public List<Account> getAccounts() {
   @PostMapping("/api/singup")
   @ResponseBody
 
-  public boolean singUpAll(@RequestParam String email,
+  public boolean singUpAll(@RequestParam String account,
                            @RequestParam String password,
                            @RequestParam String name,
-                           @RequestParam String imageUrl,
-                           @RequestParam String phoneNumber,
-                           @RequestParam String address,
                            HttpServletRequest request,
                            HttpServletResponse response) throws IOException {
-    System.out.println("email is " + email);
+    System.out.println("account is " + account);
     System.out.println("password is " + password);
-    //if(後端檢查註冊_function()==ture&&檢查重複_function()==ture).........
-    Account account = new Account(email, password);
-    Member member = new Member(email, name, imageUrl, phoneNumber, address);
-    //連線資料庫
-    accountManager.addAccount(account);
-    accountManager.addMember(member);
-    response.sendRedirect("/index1.html");
+    // //
+    // //if(後端檢查註冊_function()==ture&&檢查重複_function()==ture).........
+    Account accountData = new Account(account, password,name);
+    // // Member member = new Member(email, name, imageUrl, phoneNumber,
+    // address);
+    // // //連線資料庫
+    accountManager.addAccount(accountData);
+    // // accountManager.addMember(member);
+    response.sendRedirect("./index.html");
     return true;
   }
   /**
@@ -145,13 +145,12 @@ public List<Account> getAccounts() {
 
   @PostMapping("/api/member")
   @ResponseBody
-  public boolean singUp(@RequestParam String email,
-                        @RequestParam String name,
+  public boolean singUp(@RequestParam String email, @RequestParam String name,
                         @RequestParam String imageUrl,
                         @RequestParam String phoneNumber,
                         @RequestParam String address) {
     System.out.println("email is " + email);
-    //if(後端檢查註冊_function()==ture&&檢查重複_function()==ture).........
+    // if(後端檢查註冊_function()==ture&&檢查重複_function()==ture).........
     Member member = new Member(email, name, imageUrl, phoneNumber, address);
     //連線資料庫
     accountManager.addMember(member);
@@ -173,7 +172,7 @@ public List<Account> getAccounts() {
                         HttpServletResponse response) throws IOException {
     System.out.println("email is " + email);
     System.out.println("password is " + password);
-    //if(後端檢查註冊_function()==ture&&檢查重複_function()==ture).........
+    // if(後端檢查註冊_function()==ture&&檢查重複_function()==ture).........
     Account account = new Account(email, password);
     //連線資
     response.sendRedirect("/index1.html");
@@ -195,8 +194,6 @@ public List<Account> getAccounts() {
     return accountManager.getMembers();
   }
 
-
-
   /**
    * 註解起來就好了啦.
    *
@@ -210,7 +207,4 @@ public List<Account> getAccounts() {
   public List<Member> searchMembers(@RequestParam String email) {
     return accountManager.searchMembers(email);
   }
-
 }
-
-

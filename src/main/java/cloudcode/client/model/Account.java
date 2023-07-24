@@ -1,105 +1,42 @@
 package cloudcode.client.model;
 
-/**
- * 註解起來就好了啦.
- *
- *
- *
- *
- *
- */
 public class Account {
 
-  /**
-   * 註解起來就好了啦.
-   *
-   *
-   *
-   *
-   *
-   */
-  private String email;
-
-  /**
-   * 註解起來就好了啦.
-   *
-   *
-   *
-   *
-   *
-   */
+  private String account;
   private String password;
+  private String name;
 
-  /**
-   * 註解起來就好了啦.
-   *
-   *
-   *
-   *
-   *
-   */
   public Account() {
   }
 
-  /**
-   * 註解起來就好了啦.
-   *
-   *@param email ...
-   *@param password ...
-   *
-   *
-   */
-  public Account(final String email, final String password) {
-    this.email = email;
+  public Account(final String account, final String password, final String name) {
+    this.account = account;
     this.password = password;
+    this.name = name;
   }
 
-  /**
-   * 註解起來就好了啦.
-   *
-   *
-   *@return tag
-   *
-   *
-   */
-  public String getEmail() {
-    return email;
+  public String getAccount() {
+    return account;
   }
 
-  /**
-   * 註解起來就好了啦.
-   *
-   *@param email ...
-   *
-   *
-   *
-   */
-  public void setEmail(final String email) {
-    this.email = email;
+  public void setAccount(final String account) {
+    this.account = account;
   }
 
-  /**
-   * 註解起來就好了啦.
-   *
-   *
-   *@return tag
-   *
-   *
-   */
   public String getPassword() {
     return password;
   }
 
-  /**
-   * 註解起來就好了啦.
-   *
-   *@param password ...
-   *
-   *
-   *
-   */
   public void setPassword(final String password) {
     this.password = password;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setName(final String name) {
+    this.name = name;
   }
 
 

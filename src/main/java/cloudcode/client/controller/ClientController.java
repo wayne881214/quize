@@ -28,7 +28,7 @@ public final class ClientController {
     // Set variables in html template.
     model.addAttribute("revision", revision);
     model.addAttribute("service", service);
-    return "index";
+    return "index-home";
   }
 
 }
