@@ -8,7 +8,10 @@ public class Account {
 
   public Account() {
   }
-
+  public Account(final String account, final String password) {
+    this.account = account;
+    this.password = password;
+  }
   public Account(final String account, final String password, final String name) {
     this.account = account;
     this.password = password;
