@@ -7,7 +7,7 @@ package cloudcode.client.model;
 // content varchar(32) Not Null
 // options varchar(32) Not Null
 public class Question {
-    private String id;
+    private int id;
     private String teacher_id;
     private String type;
     private String answer;
@@ -15,7 +15,7 @@ public class Question {
     private String content;
     private String options;
 
-    public Question(String id, String teacher_id, String type, String answer, String subject, String content, String options) {
+    public Question(int id, String teacher_id, String type, String answer, String subject, String content, String options) {
         this.id = id;
         this.teacher_id = teacher_id;
         this.type = type;
@@ -26,11 +26,11 @@ public class Question {
     }
 
     // getters and setters for all fields
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
