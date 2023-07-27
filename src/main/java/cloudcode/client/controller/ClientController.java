@@ -35,19 +35,23 @@ public final class ClientController {
     // Set variables in html template.
     model.addAttribute("revision", revision);
     model.addAttribute("service", service);
-    Cookie[] cookies = request.getCookies(); //從request中獲取所有的cookie
-    if (cookies != null) {
-      for (Cookie cookie : cookies) {
-        if (cookie.getName().equals("account")) { //找到名為name的cookie
-          String value = cookie.getValue();    //獲取其值
-          return "/index";
-        }
-      }
-    }
+    // Cookie[] cookies = request.getCookies(); //從request中獲取所有的cookie
+    // if (cookies != null) {
+    //   for (Cookie cookie : cookies) {
+    //     if (cookie.getName().equals("account")) { //找到名為name的cookie
+    //       String value = cookie.getValue();    //獲取其值
+    //       return "/index";
+    //     }
+    //   }
+    // }
     return "index-home";
   }
   @GetMapping("/api/index")
   public String login(Model model) {
     return "/index";
+  }
+  @GetMapping("/admin/index")
+  public String admin(Model model) {
+    return "/admin/index.html";
   }
 }

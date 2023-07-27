@@ -80,7 +80,8 @@ public class AccountController {
     // // //連線資料庫
     accountManager.addAccount(accountData);
     // // accountManager.addMember(member);
-    response.sendRedirect("/index.html");
+    response.sendRedirect("/admin/index.html");
     return true;
   }
+  // SELECT * FROM quize.account;
 }

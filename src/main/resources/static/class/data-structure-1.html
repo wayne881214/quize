@@ -120,7 +120,9 @@
                     </div>
                     <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                         <h1 class="mb-4">資料結構簡介 (Introduction)</h1>
-                        <p class="mb-4">資料結構是計算機科學中用於組織和管理數據的方式，包括數組、鏈表、樹等。它的目的是提供高效的數據存儲和操作方法，以便快速檢索和修改數據。通過適當的資料結構選擇和算法設計，我們可以優化程序性能，實現高效的數據處理。</p>
+                        <p class="mb-4">
+                            資料結構是計算機科學中用於組織和管理數據的方式，包括數組、鏈表、樹等。它的目的是提供高效的數據存儲和操作方法，以便快速檢索和修改數據。通過適當的資料結構選擇和算法設計，我們可以優化程序性能，實現高效的數據處理。
+                        </p>
                         <p><i class="fa fa-check text-primary me-3"></i>組織性：結構化數據存儲和管理方式。</p>
                         <p><i class="fa fa-check text-primary me-3"></i>效率性：高效的數據操作和處理效率。</p>
                         <p><i class="fa fa-check text-primary me-3"></i>抽象性：分離數據和操作的抽象化設計。</p>
@@ -130,8 +132,25 @@
             </div>
         </div>
         <!-- About End -->
-        
+
         <!-- QA Start-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">答題記錄</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="testData">
+                        
+                    </div>
+                    <!-- <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div> -->
+                </div>
+            </div>
+        </div>
         <div class="container-fluid bg-light" data-wow-delay="0.1s">
             <div class="container pt-5 py-5">
                 <h1 class="text-center mb-5">測驗區</h1>
@@ -141,8 +160,8 @@
                             <a class="btn btn-primary py-3 px-5" href="data-structure-1-Test.html">隨堂測驗</a>
                         </div>
                         <div class="col-md-6 text-center">
-                            <a class="btn btn-danger py-3 px-5" href="data-structure-1-Record.html">學習紀錄</a>
-
+                            <a class="btn btn-danger py-3 px-5" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">學習紀錄</a>
                         </div>
                     </div>
                 </div>
@@ -291,6 +310,51 @@
 
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
+    <script type="module">
+        import { get, post } from '../js/request.js';
+        window.onload = function () {
+            // showAllQuestion()
+            searchAllTest()            
+        }
+        function searchAllTest() {
+            var url="/api/searchAllTest",data='student_id=12';
+            post(url,data).then((res) => {
+                    console.log(res);
+                    printResponse(res)
+                })
+                .catch((res) => {
+                    alert(`出現錯誤`)
+                    console.error(res)
+                })
+                function printResponse(res) {
+                    $('#testData').empty();
+                    let html=''
+                    var times=0
+                    html+='<div class="row">'
+                        
+                    res.forEach(element => {
+                        let newCardInfo =
+                        `
+                        <div class="col-lg-4">
+                            <div class="bg-light rounded p-5 mb-4">
+                                <h4 class="mb-4">${element.name}</h4>
+                                <p><i class="fa fa-angle-right text-primary me-2"></i>出題老師:${element.teacher_id}</p>
+                                <p><i class="fa fa-angle-right text-primary me-2"></i>滿分分數:${element.integral}</p>
+                                <p><i class="fa fa-angle-right text-primary me-2"></i>考卷分數:${element.score}</p>
+                                <p><i class="fa fa-angle-right text-primary me-2"></i>及格分數:60</p>
+                                <p><i class="fa fa-angle-right text-primary me-2"></i>作答名次:?/30</p>
+                                <a class="btn btn-danger py-3 px-5" href="review.html">檢視考卷.</a>
+                                </div>
+                        </div>
+                        `
+                        html+=newCardInfo
+                    });
+                    html+='</div>'
+                    $('#testData').append(html);
+                }
+        }
+            
+    </script>
 </body>
 
 </html>
