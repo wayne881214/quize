@@ -14,8 +14,9 @@ public class AccountService {
 
   public List<Account> getAccounts() {
     try (Connection connection = sql2oDbHandler.getConnector().open()) {
-      String query = "select 電子郵件 email, 密碼 password"
-          + " from 帳密資料";
+      String query = "select `account`, `password`, `name` from quize.account";
+      System.out.println(query);
+
       return connection.createQuery(query).executeAndFetch(Account.class);
     }
   }

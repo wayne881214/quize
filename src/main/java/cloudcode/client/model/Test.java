@@ -1,5 +1,6 @@
 package cloudcode.client.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // id varchar(256) Not Null
@@ -11,7 +12,8 @@ import java.util.List;
 // score int Not Null
 public class Test {
   private int id;
-  private List<String> question_id;
+  private String question_id;
+  private List<Integer> question_id_list;
   private String teacher_id;
   private String student_id;
   private String name;
@@ -19,19 +21,17 @@ public class Test {
   private int score;
   // private String student_answer;
 
-  public Test(int id) {
-    this.id = id;
-  }
-    public Test(int id,  String teacher_id,
-               String name, int integral, int score) {
-    this.id = id;
-    this.teacher_id = teacher_id;
-    this.name = name;
-    this.integral = integral;
-    this.score = score;
-  }
-  public Test(int id, List<String> question_id, String teacher_id,
-              String student_id, String name, int integral, int score) {
+  public Test(int id) { this.id = id; }
+  // public Test(int id, String teacher_id, String name, int integral, int score) {
+  //   this.id = id;
+  //   this.teacher_id = teacher_id;
+  //   this.name = name;
+  //   this.integral = integral;
+  //   this.score = score;
+  // }
+
+  public Test(int id, String question_id, String teacher_id, String student_id,
+              String name, int integral, int score) {
     this.id = id;
     this.question_id = question_id;
     this.teacher_id = teacher_id;
@@ -39,15 +39,21 @@ public class Test {
     this.name = name;
     this.integral = integral;
     this.score = score;
+    String[] strArray = question_id.split(",");
+    List<Integer> list = new ArrayList<>();
+    for (String s : strArray) {
+      list.add(Integer.parseInt(s));
+    }
+    this.question_id_list = list;
   }
 
   // getters and setters
   public int getId() { return id; }
 
   public void setId(int id) { this.id = id; }
-  public List<String> getQuestionId() { return question_id; }
+  public String getQuestionId() { return question_id; }
 
-  public void setQuestionId(List<String> question_id) {
+  public void setQuestionId(String question_id) {
     this.question_id = question_id;
   }
 
@@ -70,4 +76,15 @@ public class Test {
   public int getScore() { return score; }
 
   public void setScore(int score) { this.score = score; }
+
+  public List<Integer> getQuestion_id_list() { return question_id_list; }
+
+  public void setQuestion_id_list(String question) {
+    String[] strArray = question.split(",");
+    List<Integer> list = new ArrayList<>();
+    for (String s : strArray) {
+      list.add(Integer.parseInt(s));
+    }
+    this.question_id_list = list;
+  }
 }

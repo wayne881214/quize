@@ -50,4 +50,8 @@ public final class ClientController {
   public String login(Model model) {
     return "/index";
   }
+  @GetMapping("/admin/index")
+  public String admin(Model model) {
+    return "/admin/index.html";
+  }
 }

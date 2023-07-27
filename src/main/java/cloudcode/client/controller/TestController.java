@@ -1,13 +1,12 @@
 package cloudcode.client.controller;
 
-import cloudcode.client.model.Account;
 import cloudcode.client.model.Test;
 import cloudcode.client.service.TestService;
-import com.google.gson.Gson;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,25 @@ public class TestController {
   public List<Test> getAllTest() {
     System.out.println("取得所有考券");
     List<Test> response = testManager.getALLTest();
+
+    // List<Arrays> responseQ = testManager.getALLTestQ();
+    // Arrays a = responseQ.get(0);
+    // System.out.println(Arrays.toString(a));
+
     return response;
+  }
+
+  @PostMapping("/api/setTest")
+  @ResponseBody
+  public String searchAsllTest(@RequestParam String id,
+                                  HttpServletRequest request,
+                                  HttpServletResponse response)
+      throws IOException {
+    System.out.println("id is " + id);
+    Cookie cookie = new Cookie("testId", id);
+    cookie.setPath("/");
+    response.addCookie(cookie);
+    return id;
   }
 
   @PostMapping("/api/searchAllTest")
@@ -51,4 +68,6 @@ public class TestController {
     System.out.println("student_id is " + student_id);
     return testManager.getALLTest();
   }
+
+  
 }
