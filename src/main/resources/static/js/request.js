@@ -51,7 +51,7 @@ export function post(url, data) {
       if (alertContents(xhr)) {
         resolve(JSON.parse(xhr.responseText));
       }else{
-        reject(new Error(httpRequest));
+        reject(new Error(xhr));
       }
     };
   });
@@ -63,6 +63,24 @@ function alertContents(httpRequest) {
     console.log("There was a problem with the request.");
     return false;
   }
+}
+export function setCookie(name, value) {
+  // alert(id)
+  document.cookie = name+"="+value;
+}
+export function delTest(TestId) {
+  alert(`DEL`)
+  var url="/api/delTest";
+  // var TestId=getCookie('Test');
+  var data = `TestId=${TestId}`;
+  post(url,data).then((res) => {
+          console.log(res);
+          location.reload(true);
+      })
+      .catch((res) => {
+          alert(`出現錯誤`)
+          console.error(res)
+      })
 }
 // export function getIp() {
 //   $.getJSON("https://api.ipify.org?format=json", function (data) {

@@ -41,4 +41,11 @@ public class QuestionService {
     }
     return returnMessage;
   }
+  public List<Question> searchQuestion(String idList) {
+    try (Connection connection = sql2oDbHandler.getConnector().open()) {
+      String query = String.format("SELECT * FROM quize.question where id IN(%s)",idList);
+      List<Question> result = connection.createQuery(query).executeAndFetch(Question.class);
+      return result;
+    } 
+  }
 }

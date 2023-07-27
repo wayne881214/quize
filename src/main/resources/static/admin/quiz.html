@@ -336,18 +336,21 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script type="text/javascript">
+      import { get, post,setCookie,delTest } from '../js/request.js';
+
       function getTest(id){
-            alert(id)
+            // alert(id)
             document.cookie = "Test="+id;
       }
+
   </script>
     <script type="module">
-      import { get, post } from '../js/request.js';
+      import { get, post,setCookie,delTest } from '../js/request.js';
       window.onload = function () {
           // showAllQuestion()
           searchAllTest()            
       }
-      
+
       function searchAllTest() {
           var url="/api/getAllTest";
           get(url).then((res) => {
@@ -365,30 +368,32 @@
                   
                   // html+='<div class="row">'
                   res.forEach(element => {
-                    let strArray = element.question_id.split(",");
-                    let list = Array.from(strArray);
+                    if(element.student_id==0){
+                      let strArray = element.question_id.split(",");
+                      let list = Array.from(strArray);
                       let newCardInfo =
                       `<tr>
-                      <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>${element.name}</strong></td>
-                                <td>${element.integral}</td>
-                                <td>${(list.length)}題</td>
-                                <td>
-                                  <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                      <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                      <a class="dropdown-item"  onclick='getTest(${element.id})'
-                                        ><i class="bx bx-edit-alt me-1" ></i>加入題目</a
-                                      >
-                                      <a class="dropdown-item" href="javascript:void(0);"
-                                        ><i class="bx bx-trash me-1"></i> 刪除</a
-                                      >
-                                    </div>
-                                  </div>
+                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>${element.name}</strong></td>
+                        <td>${element.integral}</td>
+                        <td>${(list.length)}題</td>
+                        <td>
+                          <div class="dropdown">
+                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                              <i class="bx bx-dots-vertical-rounded"></i>
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="quizEdit.html"  onclick='getTest(${element.id})'
+                                ><i class="bx bx-edit-alt me-1" ></i>加入題目</a
+                                >
+                                <a class="dropdown-item" onclick='delTest(${element.id})'"
+                                ><i class="bx bx-trash me-1"></i> 刪除</a
+                                >
+                                </div>
+                                </div>
                                 </td></tr>
-                      `
-                      html+=newCardInfo
+                                `
+                                html+=newCardInfo
+                              }
                   });
                   html+='</div>'
                   $('#test').append(html);

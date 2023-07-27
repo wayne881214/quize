@@ -29,7 +29,15 @@ public class Test {
   //   this.integral = integral;
   //   this.score = score;
   // }
-
+  public Test( String question_id, String teacher_id, String student_id,
+              String name, int integral, int score) {
+    this.question_id = question_id;
+    this.teacher_id = teacher_id;
+    this.student_id = student_id;
+    this.name = name;
+    this.integral = integral;
+    this.score = score;
+  }
   public Test(int id, String question_id, String teacher_id, String student_id,
               String name, int integral, int score) {
     this.id = id;
@@ -79,8 +87,8 @@ public class Test {
 
   public List<Integer> getQuestion_id_list() { return question_id_list; }
 
-  public void setQuestion_id_list(String question) {
-    String[] strArray = question.split(",");
+  public void setQuestion_id_list() {
+    String[] strArray = this.question_id.split(",");
     List<Integer> list = new ArrayList<>();
     for (String s : strArray) {
       list.add(Integer.parseInt(s));

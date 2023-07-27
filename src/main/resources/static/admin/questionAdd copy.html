@@ -104,13 +104,13 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">身分管理</span>
             </li>
-            <li class="menu-item ">
+            <li class="menu-item">
               <a href="student.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Typography">學生資料維護</div>
               </a>
             </li>
-            <li class="menu-item ">
+            <li class="menu-item">
               <a href="studentClass.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Typography">學生分組維護</div>
@@ -122,14 +122,14 @@
               <span class="menu-header-text">題庫系統</span>
             </li>
 
-            <li class="menu-item active">
+            <li class="menu-item">
               <a href="quiz.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Typography">試卷資料維護</div>
               </a>
             </li>
 
-            <li class="menu-item">
+            <li class="menu-item active">
               <a href="question.html" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-dock-top"></i>
                 <div data-i18n="Typography">題目資料維護</div>
@@ -172,7 +172,7 @@
             </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-              <div data-i18n="Typography">試卷資料維護</div>
+              <div data-i18n="Typography">題目資料維護</div>
               <ul class="navbar-nav flex-row align-items-center ms-auto">
                 <!-- Place this tag where you want the button to render. -->
                 <!-- User -->
@@ -220,90 +220,106 @@
           <!-- Content wrapper -->
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
-
                 <div class="row">
                     <div class="col-md-2">
-                        <a class="btn btn-primary"  style="color:white;" href="quiz.html">回上頁</a>
-                        <a class=" btn btn-success"  style="color:white;" href="#">儲存</a>
+                      <a class="btn btn-primary"  style="color:white;" href="question.html">回上頁</a>
+                      <a class=" btn btn-success" id="addQuestion" style="color:white;">儲存</a>
                     </div>
-                  <div class="col-md-12">
-                    <div class="card">
-                        <h5 class="card-header">試卷資料編輯</h5>
-                        <div class="card-body">
-                            <form>
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="basic-default-phone">試卷名稱</label>
+                    <div class="col-md-12">
+                      <div class="col-xxl">
+                          <div class="card mb-4">
+                            <h5 class="card-header">題目資料新增</h5>
+                            <div class="card-body">
+                              <form>
+                                  <div class="row mb-3">
+                                      <label class="col-sm-2 col-form-label" for="basic-default-phone">題目名稱</label>
+                                      <div class="col-sm-10">
+                                        <input
+                                          type="text"
+                                          class="form-control phone-mask"
+                                          aria-describedby="basic-default-phone"
+                                          id="content"
+                                        />
+                                      </div>
+                                  </div>
+                                  <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-phone">科目</label>
+                                    <div class="col-sm-10">
+                                      <select class="form-control"  id="subject">
+                                        <option value="數學">數學</option>
+                                        <option value="國文">國文</option>
+                                        <option value="英文">英文</option>
+                                        <option value="社會">社會</option>
+                                      </select>
+                                    </div>
+                                </div>
+                                  <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-phone">選項A</label>
                                     <div class="col-sm-10">
                                       <input
                                         type="text"
-                                        id="basic-default-phone"
-                                        readonly="readonly"
-                                        value="數學加強班"
                                         class="form-control phone-mask"
                                         aria-describedby="basic-default-phone"
+                                        id="optionsA"
                                       />
                                     </div>
-                                  </div>
+                                </div>
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="basic-default-name">科目</label>
+                                    <label class="col-sm-2 col-form-label" for="basic-default-phone">選項B</label>
                                     <div class="col-sm-10">
-                                    <input type="text" class="form-control" readonly="readonly" id="basic-default-name" value="數學"/>
+                                      <input
+                                        type="text"
+                                        class="form-control phone-mask"
+                                        aria-describedby="basic-default-phone"
+                                        id="optionsB"
+                                      />
                                     </div>
                                 </div>
-                            </form>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-phone">選項C</label>
+                                    <div class="col-sm-10">
+                                      <input
+                                        type="text"
+                                        class="form-control phone-mask"
+                                        aria-describedby="basic-default-phone"
+                                        id="optionsC"
+                                      />
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-phone">選項D</label>
+                                    <div class="col-sm-10">
+                                      <input
+                                        type="text"
+                                        class="form-control phone-mask"
+                                        aria-describedby="basic-default-phone"
+                                        id="optionsD"
+                                      />
+                                    </div>
+                                </div>
+                                  <div class="row mb-3">
+                                      <label class="col-sm-2 col-form-label" for="basic-default-name">答案</label>
+                                      <div class="col-sm-10">
+                                      <select class="form-control"  id="answer">
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        <option value="C">C</option>
+                                        <option value="D">D</option>
+                                      </select>
+                                      </div>
+                                  </div>
+                                  <div class="row mb-3">
+                                    <label class="form-label" for="basic-default-message">解析</label>
+                                    <textarea rows="5" id="basic-default-message" class="form-control" placeholder="解析"></textarea>
+                                  </div>
+                              </form>
+                            </div>
+                          </div>
                         </div>
-                        <div class="col-md-2">
-                            <a class="btn btn-sm btn-danger"  style="color:white;" href="#">新增</a>
-                        </div>
-                        <div class="table-responsive text-nowrap">
-                          <table class="table">
-                            <thead>
-                              <tr>
-                                <th>題目名稱</th>
-                                <th>題目答案</th>
-                                <th>儲存狀態</th>
-                                <th> </th>
-                              </tr>
-                            </thead>
-                            <tbody class="table-border-bottom-0" id="questions">
-                              <tr>
-                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>請問729可以被幾個整數整除</strong></td>
-                                <td>A</td>
-                                <td><span class="badge bg-label-success me-1">已儲存 </span></td>
-                                <td>
-                                    <a class="dropdown-item" href="javascript:void(0);">
-                                        <i class="bx bx-trash me-1"></i>刪除
-                                    </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>請問以下那些是質數</strong></td>
-                                <td>D</td>
-                                <td><span class="badge bg-label-danger me-1">未儲存 </span></td>
-                                <td>
-                                    <a class="dropdown-item" href="javascript:void(0);">
-                                        <i class="bx bx-trash me-1"></i>刪除
-                                    </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>請問cos(1)答案為何</strong></td>
-                                <td>C</td>
-                                <td><span class="badge bg-label-danger me-1">未儲存 </span></td>
-                                <td>
-                                    <a class="dropdown-item" href="javascript:void(0);">
-                                        <i class="bx bx-trash me-1"></i>刪除
-                                    </a>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                      <!--/ Basic Bootstrap Table -->
+                    </div>
                   </div>
-                </div>
-              </div>
+                
+              
           </div>
           <!-- Content wrapper -->
         </div>
@@ -330,72 +346,44 @@
     <!-- Page JS -->
     <script src="../assets/js/dashboards-analytics.js"></script>
 
+  </script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script type="module">
       import { get, post } from '../js/request.js';
       window.onload = function () {
           // showAllQuestion()
-          searchQuestion();            
+          // searchAllTest()            
       }
-      function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-      }
-      function searchQuestion() {
-          var url="/api/searchTestQuestion";
-          var student_id=0,TestId=getCookie('Test');
-          var data = `TestId=${TestId}&student_id=${student_id}`;
-          post(url,data).then((res) => {
-                  console.log(res);
-                  printResponse(res)
-              })
-              .catch((res) => {
-                  alert(`出現錯誤`)
-                  console.error(res)
-              })
-              function printResponse(res) {
-                  $('#questions').empty();
-                  let html=''
-                  var times=0
-                  // html+='<div class="row">'
-                    res.forEach(element => {
-                      let type='未知'
-                    if(element.type==0){
-                      type='單選題'
+      $("#addQuestion").click(addQuestion)
+      function addQuestion() {
+          var url="/api/addQuestion";
+          var teacher_id='0';
+          var student_id='0';
+          var type='0';
+          var answer=$("#answer").val();
+          var subject=$("#subject").val();
+          var content=$("#content").val();
+          var options_a=$("#optionsA").val();
+          var options_b=$("#optionsB").val();
+          var options_c=$("#optionsC").val();
+          var options_d=$("#optionsD").val();
+          
+          let data = `teacher_id=${teacher_id}&student_id=${student_id}&type=${type}&answer=${answer}&subject=${subject}&content=${content}&options_a=${options_a}&options_b=${options_b}&&options_c=${options_c}&options_d=${options_d}`;
+            console.log("None of the variables is undefined");
+            post(url,data).then((res) => {
+                    console.log(res);
+                    if(res){
+                      alert('送出成功')
+                    }else{
+                      alert(`出現錯誤`)
                     }
-                      let newCardInfo =
-                      `
-                      <tr>
-                        <tr>
-                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>${element.content}</strong></td>
-                                <td>${element.subject}</td>
-                                <td>${type}</td>
-                                <td>
-                                  <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                      <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="questionEdit.html" onclick="setCookie('Question',${element.id})"
-                                        ><i class="bx bx-edit-alt me-1"></i>編輯</a
-                                      >
-                                      <a class="dropdown-item" href="javascript:void(0);"
-                                        ><i class="bx bx-trash me-1"></i> 刪除</a
-                                      >
-                                    </div>
-                                  </div>
-                                </td>
-                              </tr>
-                      `
-                      html+=newCardInfo
-                  });
-                  html+='</div>'
-                  $('#questions').append(html);
-              }
-      }
-      
-      </script>
+                })
+                .catch((res) => {
+                    alert(`出現錯誤`)
+                    console.error(res)
+                })
+        }
+  </script>
   </body>
 </html>
